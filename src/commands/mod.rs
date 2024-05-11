@@ -7,4 +7,9 @@ pub trait RxCommand {
     // #[allow(dead_code)]
     /// Function to execute the command
     fn exec();
+
+    /// Show the help for the according command
+    fn help() {
+        println!("Help command for [command]");
+    }
 }
