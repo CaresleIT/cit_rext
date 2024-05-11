@@ -1,5 +1,6 @@
 pub mod make;
 pub mod show;
+pub mod build;
 
 /// General actions for each command
 /// all the command need to extend from this
