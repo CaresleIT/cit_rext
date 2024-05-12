@@ -24,3 +24,21 @@ impl RxMake {
         println!("We will create a page with the name {}", name);
     }
 }
+
+pub fn logic_command_make(command : &String) {
+    if command.contains("make") {
+        let name = std::env::args().nth(2).unwrap_or_else(|| String::new());
+
+        if command.contains("make:api") && !name.is_empty() {
+            RxMake::make_api(name);
+            return;
+        }
+
+        if command.contains("make:page") && !name.is_empty() {
+            RxMake::make_page(name);
+            return;
+        }
+
+        RxMake::help();
+    }
+}

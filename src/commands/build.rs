@@ -11,3 +11,9 @@ impl RxCommand for RxBuild {
         println!("help of build");
     }
 }
+
+pub fn logic_command_build(command: &String) {
+    if command.contains("build") {
+        RxBuild::exec();
+    }
+}
