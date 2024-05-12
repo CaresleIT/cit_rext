@@ -1,5 +1,5 @@
 
-use crate::file::file_manager::RxFileManager;
+use crate::{file::file_manager::RxFileManager, templates::route_template};
 
 use super::RxCommand;
 
@@ -26,9 +26,9 @@ impl RxMake {
         // Creating the file
         let path_to_save = format!("./app/api/{}", name);
 
-        RxFileManager::save_file(String::from(&path_to_save), "route.js");
-        RxFileManager::save_file(String::from(&path_to_save), "schema.js");
-        RxFileManager::save_file(String::from(&path_to_save), "queries.js");
+        // RxFileManager::save_file(String::from(&path_to_save), "route.js");
+        // RxFileManager::save_file(String::from(&path_to_save), "schema.js");
+        // RxFileManager::save_file(String::from(&path_to_save), "queries.js");
     }
 
     pub fn make_page(name: String, options: String) {
@@ -36,15 +36,23 @@ impl RxMake {
         println!("These are the options passed to the command {}", options);
 
         let path_to_save = format!("./app/{}", name);
+        let name_without_dash = name.clone().replace("/", "");
+
+        let string_page = route_template(&format!("Page{}", name_without_dash));
+        let string_loading = route_template(&format!("Loading{}", name_without_dash));
+        let string_error = route_template(&format!("Error{}", name_without_dash));
+        let string_layout = route_template(&format!("Layout{}", name_without_dash));
+        let string_default = route_template(&format!("Default{}", name_without_dash));
+        let string_not = route_template(&format!("NotFound{}", name_without_dash));
 
         // Save the files
-        RxFileManager::save_file(String::from(&path_to_save), "page.jsx");
-        RxFileManager::save_file(String::from(&path_to_save), "loading.jsx");
-        RxFileManager::save_file(String::from(&path_to_save), "error.jsx");
-        RxFileManager::save_file(String::from(&path_to_save), "layout.jsx");
-        RxFileManager::save_file(String::from(&path_to_save), "default.jsx");
-        RxFileManager::save_file(String::from(&path_to_save), "not-found.jsx");
-        RxFileManager::save_file(String::from(format!("{}/_components", path_to_save)), "");
+        RxFileManager::save_file(String::from(&path_to_save), "page.jsx",string_page);
+        RxFileManager::save_file(String::from(&path_to_save), "loading.jsx", string_loading);
+        RxFileManager::save_file(String::from(&path_to_save), "error.jsx", string_error);
+        RxFileManager::save_file(String::from(&path_to_save), "layout.jsx", string_layout);
+        RxFileManager::save_file(String::from(&path_to_save), "default.jsx", string_default);
+        RxFileManager::save_file(String::from(&path_to_save), "not-found.jsx", string_not);
+        RxFileManager::save_file(String::from(format!("{}/_components", path_to_save)), "", String::new());
     }
 }
 

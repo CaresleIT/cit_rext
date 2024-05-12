@@ -1,4 +1,4 @@
-use std::fs::{self, File};
+use std::{fs::{self, File}, io::Write};
 
 pub struct RxFileManager {
 }
@@ -6,7 +6,7 @@ pub struct RxFileManager {
 impl RxFileManager {
     /// Save the file in the given path, creates the 
     /// folders in case of not exist
-    pub fn save_file(path: String, file: &str) -> Option<bool> {
+    pub fn save_file(path: String, file: &str, content: String) -> Option<bool> {
         let mut final_path = path;
 
         if final_path.contains("//") {
@@ -28,7 +28,10 @@ impl RxFileManager {
         let file = File::create(format!("{}{}", final_path_clone, file)); 
 
         match file {
-            Ok(_) => println!("File created"),
+            Ok(mut f) => {
+                println!("File created");
+                f.write_all(content.as_bytes()).expect("Unable to write data for file the selected file");
+            },
             Err(e) => println!("{:?}", e),
         }
         Some(true)
