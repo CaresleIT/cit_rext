@@ -24,10 +24,11 @@ impl RxMake {
         println!("These are the options passed to the command {}", options);
 
         // Creating the file
-        // let path_to_save = format!("./app/{}", name);
+        let path_to_save = format!("./app/api/{}", name);
 
-
-        // RxFileManager::save_file(String::from(format!("./app/{}/file.jsx", name)));
+        RxFileManager::save_file(String::from(&path_to_save), "route.js");
+        RxFileManager::save_file(String::from(&path_to_save), "schema.js");
+        RxFileManager::save_file(String::from(&path_to_save), "queries.js");
     }
 
     pub fn make_page(name: String, options: String) {
