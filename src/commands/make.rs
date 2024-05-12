@@ -25,7 +25,7 @@ impl RxMake {
 
         // Creating the file
 
-        RxFileManager::save_file(String::from(format!("./app/{}.jsx", name)));
+        RxFileManager::save_file(String::from(format!("./app/test/{}/file.jsx", name)));
     }
 
     pub fn make_page(name: String, options: String) {
