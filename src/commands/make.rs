@@ -1,5 +1,5 @@
 
-use crate::{file::file_manager::RxFileManager, templates::route_template};
+use crate::{file::file_manager::RxFileManager, templates::{api_template, queries_template, route_template, schema_template}};
 
 use super::RxCommand;
 
@@ -26,9 +26,9 @@ impl RxMake {
         // Creating the file
         let path_to_save = format!("./app/api/{}", name);
 
-        // RxFileManager::save_file(String::from(&path_to_save), "route.js");
-        // RxFileManager::save_file(String::from(&path_to_save), "schema.js");
-        // RxFileManager::save_file(String::from(&path_to_save), "queries.js");
+        RxFileManager::save_file(String::from(&path_to_save), "route.js", api_template());
+        RxFileManager::save_file(String::from(&path_to_save), "schema.js", schema_template());
+        RxFileManager::save_file(String::from(&path_to_save), "queries.js", queries_template());
     }
 
     pub fn make_page(name: String, options: String) {
