@@ -24,13 +24,26 @@ impl RxMake {
         println!("These are the options passed to the command {}", options);
 
         // Creating the file
+        // let path_to_save = format!("./app/{}", name);
 
-        RxFileManager::save_file(String::from(format!("./app/test/{}/file.jsx", name)));
+
+        // RxFileManager::save_file(String::from(format!("./app/{}/file.jsx", name)));
     }
 
     pub fn make_page(name: String, options: String) {
         println!("We will create a page with the name {}", name);
         println!("These are the options passed to the command {}", options);
+
+        let path_to_save = format!("./app/{}", name);
+
+        // Save the files
+        RxFileManager::save_file(String::from(&path_to_save), "page.jsx");
+        RxFileManager::save_file(String::from(&path_to_save), "loading.jsx");
+        RxFileManager::save_file(String::from(&path_to_save), "error.jsx");
+        RxFileManager::save_file(String::from(&path_to_save), "layout.jsx");
+        RxFileManager::save_file(String::from(&path_to_save), "default.jsx");
+        RxFileManager::save_file(String::from(&path_to_save), "not-found.jsx");
+        RxFileManager::save_file(String::from(format!("{}/_components", path_to_save)), "");
     }
 }
 
