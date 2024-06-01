@@ -1,7 +1,6 @@
 use std::{fs::{self, File}, io::Write};
 
-pub struct RxFileManager {
-}
+pub struct RxFileManager {}
 
 impl RxFileManager {
     /// Save the file in the given path, creates the 
@@ -25,7 +24,7 @@ impl RxFileManager {
             return Some(true);
         }
 
-        let file = File::create(format!("{}{}", final_path_clone, file)); 
+        let file = File::create(format!("{}/{}", final_path_clone, file)); 
 
         match file {
             Ok(mut f) => {

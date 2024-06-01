@@ -10,4 +10,8 @@ fn main() {
     logic_command_show(&command);
     logic_command_make(&command);
     logic_command_build(&command);
+
+    if command.contains("help") {
+        println!("Run help");
+    }
 }
