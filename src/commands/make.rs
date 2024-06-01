@@ -36,14 +36,20 @@ impl RxMake {
         println!("These are the options passed to the command {}", options);
 
         let path_to_save = format!("./app/{}", name);
-        let name_without_dash = name.clone().replace("/", "");
+        // let name_without_dash = name.clone().replace("/", "");
 
-        let string_page = route_template(&format!("Page{}", name_without_dash));
-        let string_loading = route_template(&format!("Loading{}", name_without_dash));
-        let string_error = route_template(&format!("Error{}", name_without_dash));
-        let string_layout = route_template(&format!("Layout{}", name_without_dash));
-        let string_default = route_template(&format!("Default{}", name_without_dash));
-        let string_not = route_template(&format!("NotFound{}", name_without_dash));
+        // let string_page = route_template(&format!("Page{}", name_without_dash));
+        // let string_loading = route_template(&format!("Loading{}", name_without_dash));
+        // let string_error = route_template(&format!("Error{}", name_without_dash));
+        // let string_layout = route_template(&format!("Layout{}", name_without_dash));
+        // let string_default = route_template(&format!("Default{}", name_without_dash));
+        // let string_not = route_template(&format!("NotFound{}", name_without_dash));
+        let string_page = route_template(&format!("Page{}", ""));
+        let string_loading = route_template(&format!("Loading{}", ""));
+        let string_error = route_template(&format!("Error{}", ""));
+        let string_layout = route_template(&format!("Layout{}", ""));
+        let string_default = route_template(&format!("Default{}", ""));
+        let string_not = route_template(&format!("NotFound{}", ""));
 
         // Save the files
         RxFileManager::save_file(String::from(&path_to_save), "page.jsx",string_page);
@@ -53,6 +59,9 @@ impl RxMake {
         RxFileManager::save_file(String::from(&path_to_save), "default.jsx", string_default);
         RxFileManager::save_file(String::from(&path_to_save), "not-found.jsx", string_not);
         RxFileManager::save_file(String::from(format!("{}/_components", path_to_save)), "", String::new());
+        RxFileManager::save_file(String::from(format!("{}/_helpers", path_to_save)), "", String::new());
+        RxFileManager::save_file(String::from(format!("{}/_hooks", path_to_save)), "", String::new());
+        RxFileManager::save_file(String::from(format!("{}/_states", path_to_save)), "", String::new());
     }
 }
 

@@ -1,4 +1,4 @@
-use std::{fs::{self, File}, io::Write};
+use std::{fs::{self, File}, io::Write, path::Path};
 
 pub struct RxFileManager {}
 
@@ -24,6 +24,12 @@ impl RxFileManager {
             return Some(true);
         }
 
+        let file_path = format!("{}/{}", final_path_clone, file);
+        let exists = Path::new(&file_path).exists();
+
+        if exists {
+            return Some(true);
+        }
         let file = File::create(format!("{}/{}", final_path_clone, file)); 
 
         match file {
