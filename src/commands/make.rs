@@ -36,14 +36,7 @@ impl RxMake {
         println!("These are the options passed to the command {}", options);
 
         let path_to_save = format!("./app/{}", name);
-        // let name_without_dash = name.clone().replace("/", "");
-
-        // let string_page = route_template(&format!("Page{}", name_without_dash));
-        // let string_loading = route_template(&format!("Loading{}", name_without_dash));
-        // let string_error = route_template(&format!("Error{}", name_without_dash));
-        // let string_layout = route_template(&format!("Layout{}", name_without_dash));
-        // let string_default = route_template(&format!("Default{}", name_without_dash));
-        // let string_not = route_template(&format!("NotFound{}", name_without_dash));
+        
         let string_page = route_template(&format!("Page{}", ""));
         let string_loading = route_template(&format!("Loading{}", ""));
         let string_error = route_template(&format!("Error{}", ""));
